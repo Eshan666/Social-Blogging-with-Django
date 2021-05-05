@@ -1,0 +1,35 @@
+{% extends 'blog/base.html'%}
+
+{% block content %}
+<div class="container">
+    <form method="POST" acion="">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Title</label>
+            <input type="text" name="title" class="form-control" id="exampleFormControlInput1" placeholder="Blog Title">
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary my-2">Submit</button>
+    </form>
+
+    {% for post in my_posts %}
+    <div class="card">
+        
+        <div class="card-body">
+            <h5 class="card-title">{{post.title}}</h5>
+            <p class="card-text">{{post.description}}</p>
+            <a href="#" class="btn btn-primary">Edit</a>
+        </div>
+        <div class="card-header">
+            {{post.date_created}}
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+
+
+{% endblock %}
