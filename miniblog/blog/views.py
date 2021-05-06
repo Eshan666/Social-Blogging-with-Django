@@ -74,3 +74,27 @@ def myProfilePage(request):
     
 
     return render(request,'blog/myProfile.html',context)
+
+def updatePost(request,pk):
+    post = BlogPost.objects.get(id=pk)
+    print(post)
+    context = {"post":post}
+
+    if request.method == "POST":
+        title = request.POST.get('title')
+        description = request.POST.get('description')
+        post.title = title
+        post.description = description
+        post.save() 
+        return redirect('myProfilePage')
+
+    return render(request,'blog/updatePost.html',context)
+
+def deletePost(request,pk):
+    post = BlogPost.objects.get(id=pk)
+
+    if request.method == 'POST':
+        post.delete()
+        return redirect('myProfilePage')
+
+    return render(request, 'blog/deletePost.html')

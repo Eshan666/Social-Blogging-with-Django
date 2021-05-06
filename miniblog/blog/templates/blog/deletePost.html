@@ -1,0 +1,11 @@
+{% extends 'blog/base.html'%}
+
+{% block content %}
+<h3> Are you you want to delete the post?</h3>
+<form method="POST" action="">
+    {% csrf_token %}
+    <a class= "btn btn-danger" href="{% url 'dashBoardPage' %}">Cancel</a>
+    <input class="btn btn-warning"  type="submit" name="confirm">
+
+</form>
+{% endblock %}

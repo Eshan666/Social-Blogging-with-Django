@@ -1,0 +1,22 @@
+{% extends 'blog/base.html'%}
+{% block content %}
+
+<div class="container">
+    <h2>Update your post here</h2>
+    <hr>
+    <form method="POST" acion="">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Title</label>
+            <input type="text" value="{{post.title}}" name="title" class="form-control" id="exampleFormControlInput1" placeholder="Blog Title">
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description">{{post.description}}</textarea>
+        </div>
+        <button type="submit" class="btn btn-primary my-2">Update!</button>
+    </form>
+
+</div>
+
+{% endblock %}

@@ -1,7 +1,7 @@
 {% extends 'blog/base.html'%}
 
 {% block content %}
-<div class="container">
+<div class="container allposts">
     <form method="POST" acion="">
         {% csrf_token %}
         <div class="mb-3">
@@ -21,7 +21,9 @@
         <div class="card-body">
             <h5 class="card-title">{{post.title}}</h5>
             <p class="card-text">{{post.description}}</p>
-            <a href="#" class="btn btn-primary">Edit</a>
+            <a href="{%url 'updatePost' post.id %}" class="btn btn-primary">Edit</a>
+            <a href="{%url 'deletePost' post.id %}"  class="btn btn-danger">Delete</a>
+
         </div>
         <div class="card-header">
             {{post.date_created}}
