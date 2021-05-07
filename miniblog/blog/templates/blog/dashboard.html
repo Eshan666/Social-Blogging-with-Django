@@ -1,6 +1,11 @@
 {% extends 'blog/base.html'%}
 
 {% block content %}
+{% for message in messages %}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{message}}
+</div>
+{% endfor %}
 <div class="container allposts">
     {% for post in all_posts %}
     <div class="card my-3">

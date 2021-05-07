@@ -23,6 +23,7 @@ def loginPage(request):
 
             if user is not None:
                 login(request,user)
+                messages.success(request,"Login Successful")
                 return redirect('dashBoardPage')
             else:
                 messages.info(request,"username or password is incorrect")
@@ -30,6 +31,7 @@ def loginPage(request):
 
 def logoutPage(request):
     logout(request)
+    messages.success(request, 'Your are now logged out!')
     return redirect('loginPage')
 
 
@@ -67,6 +69,7 @@ def myProfilePage(request):
         description = request.POST.get("description")
         post = BlogPost(author = request.user,title=title,description=description)
         post.save()
+        messages.success(request, 'Your post is published successfully')
 
 
     my_posts = BlogPost.objects.filter(author = request.user)

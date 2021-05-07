@@ -1,6 +1,13 @@
 {% extends 'blog/base.html'%}
 
 {% block content %}
+{% for message in messages %}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>{{message}}</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+
 <div class="container allposts">
     <form method="POST" acion="">
         {% csrf_token %}
@@ -17,12 +24,12 @@
 
     {% for post in my_posts %}
     <div class="card">
-        
+
         <div class="card-body">
             <h5 class="card-title">{{post.title}}</h5>
             <p class="card-text">{{post.description}}</p>
             <a href="{%url 'updatePost' post.id %}" class="btn btn-primary">Edit</a>
-            <a href="{%url 'deletePost' post.id %}"  class="btn btn-danger">Delete</a>
+            <a href="{%url 'deletePost' post.id %}" class="btn btn-danger">Delete</a>
 
         </div>
         <div class="card-header">
